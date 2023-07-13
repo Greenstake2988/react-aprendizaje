@@ -5,6 +5,7 @@ const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
  
+  // Pointer Pelota Sigue
   useEffect(() => {
     const handleMove = (event) => {
       const { clientX, clientY } = event
@@ -19,6 +20,13 @@ const FollowMouse = () => {
     }
   }, [enabled])
 
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled)
+    return () => {
+      document.body.classList.remove('no-cursor')
+    }
+  })
+  
 
   return(
     <>
